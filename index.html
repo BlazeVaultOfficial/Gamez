@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GAMEZ.RUN.PLACE — PLAY LIKE A PSYCHO</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Geist:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--lime:#D4FF00;--pink:#FF2E93;--violet:#7A5CFF;--bg:#050507}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:#fff;font-family:'Geist',sans-serif;overflow-x:hidden}
+::selection{background:var(--lime);color:#000}
+
+/* TOP TICKER */
+.ticker{background:var(--lime);color:#000;white-space:nowrap;overflow:hidden;padding:8px 0;font-family:'Bebas Neue';font-size:18px;letter-spacing:1px;display:flex}
+.ticker div{animation:scroll 20s linear infinite;display:flex;gap:40px}
+@keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* NAV */
+nav{padding:18px 4%;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:99;background:rgba(5,5,7,0.85);backdrop-filter:blur(20px);border-bottom:1px solid #15151a}
+.logo{font-family:'Bebas Neue';font-size:34px;letter-spacing:1px}
+.logo span{color:var(--lime)}
+.nav-right{display:flex;gap:12px;align-items:center}
+.pill{border:1px solid #222;border-radius:99px;padding:8px 14px;font-size:11px;font-weight:700;letter-spacing:1px}
+.pill.live{background:#fff;color:#000;border-color:#fff}
+.pill.live i{width:8px;height:8px;background:#0f0;border-radius:50%;display:inline-block;margin-right:6px;box-shadow:0 0 8px #0f0;animation:blink 1s infinite}
+@keyframes blink{50%{opacity:0.3}}
+
+/* HERO */
+.hero{padding:50px 4% 20px;display:grid;grid-template-columns:1.3fr 0.7fr;gap:20px}
+@media(max-width:900px){.hero{grid-template-columns:1fr}}
+.big{font-family:'Bebas Neue';font-size:clamp(60px, 11vw, 150px);line-height:0.85;letter-spacing:-2px}
+.big em{font-style:normal;color:transparent;-webkit-text-stroke:1.5px var(--lime)}
+.big .pink{color:var(--pink);-webkit-text-stroke:0}
+.sub{margin-top:18px;font-size:18px;color:#8a8a95;max-width:480px;line-height:1.5}
+.sub b{color:#fff}
+.ctas{margin-top:22px;display:flex;gap:12px;flex-wrap:wrap}
+.btn{padding:16px 26px;border-radius:14px;font-weight:900;font-size:14px;letter-spacing:1px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;cursor:pointer;transition:0.2s}
+.btn-lime{background:var(--lime);color:#000;box-shadow:0 0 30px rgba(212,255,0,0.3)}
+.btn-lime:hover{transform:translateY(-2px) scale(1.02);box-shadow:0 0 50px rgba(212,255,0,0.5)}
+.btn-dark{background:#15151a;border:1px solid #222;color:#fff}
+.btn-dark:hover{background:#1e1e26}
+
+.hero-right{display:grid;gap:12px}
+.stat-card{background:#111116;border:1px solid #1e1e26;border-radius:20px;padding:18px;display:flex;justify-content:space-between;align-items:center}
+.stat-card h4{font-size:32px;font-weight:900}
+.stat-card span{font-size:10px;letter-spacing:2px;color:#666}
+.creator{background:linear-gradient(135deg, #1a1a2a, #111);border:1px solid #222;border-radius:20px;padding:16px;display:flex;gap:12px;align-items:center}
+.creator .av{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--violet),var(--pink));display:grid;place-items:center;font-weight:900}
+.creator small{color:#666;font-size:11px;letter-spacing:1px}
+
+/* GAMES BENTO */
+.games{padding:30px 4%}
+.head{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+.head h2{font-family:'Bebas Neue';font-size:38px;letter-spacing:1px}
+.filters{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none}
+.f{white-space:nowrap;padding:10px 16px;border-radius:99px;background:#111116;border:1px solid #1e1e26;font-size:12px;font-weight:700;cursor:pointer}
+.f.active{background:#fff;color:#000}
+
+.bento{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:200px;gap:14px}
+@media(max-width:900px){.bento{grid-template-columns:repeat(2,1fr);grid-auto-rows:180px}}
+.card{border-radius:24px;border:1px solid #1e1e26;position:relative;overflow:hidden;cursor:pointer;transition:0.3s;background:#111116}
+.card:hover{transform:translateY(-4px) scale(1.01);border-color:#2a2a3a;box-shadow:0 20px 60px rgba(0,0,0,0.6)}
+.card:nth-child(1){grid-column:span 8;grid-row:span 2;background:radial-gradient(500px 300px at 20% 0%, #2a1a4a, #111116)}
+.card:nth-child(2){grid-column:span 4;background:radial-gradient(400px 200px at 0% 0%, #2a3a1a, #111116)}
+.card:nth-child(3){grid-column:span 4}
+.card:nth-child(4){grid-column:span 3}
+.card:nth-child(5){grid-column:span 5;grid-row:span 1}
+.card:nth-child(6){grid-column:span 4}
+.card:nth-child(n+7){grid-column:span 3}
+@media(max-width:900px){.card:nth-child(n){grid-column:span 1 !important;grid-row:span 1 !important}.card:nth-child(1){grid-column:span 2 !important;grid-row:span 2 !important}}
+
+.card-top{padding:18px;display:flex;justify-content:space-between}
+.badge{font-size:9px;padding:5px 8px;border-radius:99px;font-weight:900;letter-spacing:1px}
+.badge-hot{background:var(--pink);color:#fff}
+.badge-new{background:var(--lime);color:#000}
+.badge-live{background:#000;color:#0f0;border:1px solid #1a2a1a}
+.card-icon{position:absolute;left:18px;bottom:64px;font-size:64px;filter:drop-shadow(0 10px 20px rgba(0,0,0,0.5));transition:0.3s}
+.card:hover .card-icon{transform:scale(1.1) rotate(-5deg)}
+.card-info{position:absolute;bottom:0;left:0;right:0;padding:16px 18px;background:linear-gradient(0deg, rgba(0,0,0,0.9) 0%, transparent 100%)}
+.card-info h3{font-size:16px;font-weight:900}
+.card-info p{font-size:11px;color:#888;margin-top:2px;letter-spacing:0.5px}
+.players{position:absolute;right:14px;bottom:16px;background:#000000aa;backdrop-filter:blur(6px);border:1px solid #222;padding:6px 10px;border-radius:99px;font-size:10px}
+
+/* FOOTER */
+footer{margin-top:40px;padding:30px 4%;border-top:1px solid #15151a;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;color:#444;font-size:11px;letter-spacing:1px}
+footer a{color:#666;text-decoration:none}
+footer a:hover{color:var(--lime)}
+</style>
+</head>
+<body>
+<div class="ticker"><div>
+<span>⚡ NO LOGIN ⚡ NO ADS HELL ⚡ INSTANT PLAY ⚡ MADE BY PRABHASHA ⚡ SAME DEV AS TOOLZ.RUN.PLACE ⚡ </span>
+<span>⚡ NO LOGIN ⚡ NO ADS HELL ⚡ INSTANT PLAY ⚡ MADE BY PRABHASHA ⚡ SAME DEV AS TOOLZ.RUN.PLACE ⚡ </span>
+<span>⚡ NO LOGIN ⚡ NO ADS HELL ⚡ INSTANT PLAY ⚡ MADE BY PRABHASHA ⚡ SAME DEV AS TOOLZ.RUN.PLACE ⚡ </span>
+</div></div>
+
+<nav>
+<div class="logo">GAMEZ<span>.RUN</span>.PLACE</div>
+<div class="nav-right">
+<div class="pill"><i></i>12,483 ONLINE</div>
+<div class="pill live">● LIVE NOW</div>
+</div>
+</nav>
+
+<section class="hero">
+<div>
+<div class="big">PLAY<br><em>FASTER.</em><br><span class="pink">DIE LESS.</span></div>
+<div class="sub">The web game site that doesn't suck. <b>50+ handpicked games</b>, zero download, zero cringe. Built by a gamer who hates slow sites.</div>
+<div class="ctas">
+<a class="btn btn-lime" href="#games">START PLAYING →</a>
+<a class="btn btn-dark" href="https://toolz.run.place">VISIT TOOLZ.RUN.PLACE ↗</a>
+</div>
+</div>
+<div class="hero-right">
+<div class="stat-card"><div><h4>50+</h4><span>GAMES</span></div><div style="font-size:32px">🎮</div></div>
+<div class="stat-card"><div><h4>0.4s</h4><span>AVG LOAD</span></div><div style="font-size:32px">⚡</div></div>
+<div class="creator"><div class="av">PK</div><div><div style="font-weight:900;font-size:13px">Prabhasha Kulathunga</div><small>DEV • GAMER • TOOLZ.RUN.PLACE CREATOR</small></div><div style="margin-left:auto;font-size:18px">↗</div></div>
+</div>
+</section>
+
+<section class="games" id="games">
+<div class="head">
+<h2>FEATURED — PLAY NOW</h2>
+<div class="filters"><div class="f active">🔥 ALL</div><div class="f">⚔️ ACTION</div><div class="f">🧩 PUZZLE</div><div class="f">🏎️ RACING</div><div class="f">👾 RETRO</div></div>
+</div>
+
+<div class="bento">
+<div class="card"><div class="card-top"><div class="badge badge-hot">🔥 HOTTEST</div><div class="badge badge-live">● 12K LIVE</div></div><div class="card-icon">🚀</div><div class="card-info"><h3>SPACE BLASTER X — BOSS RUSH</h3><p>ACTION • FPS • NEW UPDATE</p></div><div class="players">▶ PLAY</div></div>
+<div class="card"><div class="card-top"><div class="badge badge-new">NEW DROP</div></div><div class="card-icon">🐍</div><div class="card-info"><h3>NEON SNAKE</h3><p>CLASSIC REBORN</p></div><div class="players">25k</div></div>
+<div class="card"><div class="card-top"><div class="badge badge-live">● LIVE</div></div><div class="card-icon">🧩</div><div class="card-info"><h3>2048 CHAOS</h3><p>PUZZLE • ADDICTIVE</p></div><div class="players">12k</div></div>
+<div class="card"><div class="card-top"><div class="badge badge-new">NEW</div></div><div class="card-icon">🏎️</div><div class="card-info"><h3>DRIFT MINI</h3><p>RACING</p></div></div>
+<div class="card"><div class="card-top"><div class="badge badge-hot">VIRAL</div></div><div class="card-icon">⚡</div><div class="card-info"><h3>REFLEX TEST - 0.1s CHALLENGE</h3><p>TRY HARD MODE • TIKTOK VIRAL</p></div><div class="players">44k playing</div></div>
+<div class="card"><div class="card-top"><div class="badge badge-live">● LIVE</div></div><div class="card-icon">🧠</div><div class="card-info"><h3>MIND FLIP</h3><p>BRAIN GAME</p></div></div>
+</div>
+</section>
+
+<footer>
+<div>© 2026 GAMEZ.RUN.PLACE — BUILT BY PRABHASHA KULATHUNGA • SAME DEV AS TOOLZ.RUN.PLACE</div>
+<div><a href="#">DISCORD</a> &nbsp; <a href="#">GITHUB</a> &nbsp; <a href="https://toolz.run.place">TOOLZ</a></div>
+</footer>
+
+<script>
+document.querySelectorAll('.f').forEach(f=>f.onclick=()=>{document.querySelectorAll('.f').forEach(x=>x.classList.remove('active'));f.classList.add('active')})
+document.querySelectorAll('.card').forEach(c=>c.onclick=()=>alert('Launch: '+c.querySelector('h3').innerText))
+</script>
+</body>
+</html>
